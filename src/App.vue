@@ -12,7 +12,7 @@
   </div>
   <div class="navigation-wrapper">
     <span>Главная</span>
-    <div class="arrow"></div>
+    <div class="navigation__arrow"></div>
     <div class="navigation__cart">Корзина</div>
   </div>
   <Cart v-bind:cart="cart"/>
@@ -22,11 +22,14 @@
 
 
 <script>
-
 import cardList from "@/components/cardList";
 import Cart from "@/components/Cart"
-export default {
 
+export default {
+  components: {
+    cardList,
+    Cart,
+  },
   computed: {
     items: function () {
       return this.$store.state.items
@@ -49,10 +52,6 @@ export default {
         return acc
       }, 0)
     }
-  },
-  components: {
-    cardList,
-    Cart,
   },
 }
 </script>
@@ -101,7 +100,7 @@ body {
   align-items: center;
 }
 
-.arrow {
+.navigation__arrow {
   width: 0;
   height: 0;
   border-style: solid;

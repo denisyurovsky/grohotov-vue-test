@@ -1,6 +1,6 @@
 <template>
   <div class="cart-title">
-    Ваша корзина
+    <span>Ваша корзина</span>
     <span class="cart__total-items">
     Кол-во товаров: {{ totalItems }}
       <button @click="$store.commit('removeCart')">
@@ -122,6 +122,7 @@ export default {
           count: item.count
         }
       })
+      items.installation = this.installation
       console.log(items)
     }
   }
@@ -184,16 +185,6 @@ export default {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
-}
-
-@media screen and (max-width: 1260px) {
-  .wrapper {
-    flex-direction: column;
-  }
-
-  .total {
-    min-width: 100%;
-  }
 }
 
 .cart__installation {
@@ -282,5 +273,15 @@ export default {
   border: none;
   background: #F6F8FA;
   text-align: center;
+}
+
+@media screen and (max-width: 1260px) {
+  .wrapper {
+    flex-direction: column;
+  }
+  .total {
+    min-width: 100%;
+  }
+
 }
 </style>

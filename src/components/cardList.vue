@@ -5,7 +5,7 @@
 </span>
     <div class="cart__buttons">
       <button class="buttons__prev" @click="showPrevItems"> &#65308; </button>
-      <span>{{page}} / {{totalItems / 4}}</span>
+      <span>{{page}} / {{Math.ceil(totalItems / 4)}}</span>
       <button class="buttons__next" @click="showNextItems"> &#xFF1E; </button>
     </div>
   </div>
@@ -22,7 +22,7 @@
       <span class="card__prices-eu"> {{item.euPrice.min}}€ - {{item.euPrice.max}}€</span>
     </div>
         <button @click ="addToCart(item.id)" class="card-button">
-          добавить
+          Подробнее
         </button>
     </div>
   </div>
@@ -66,7 +66,7 @@ export default {
       showPrevItems() {
 
       if (this.page <= 1) {
-        return
+        return;
         }
         this.page--
         this.$store.commit('prevItems', {page: this.page})
@@ -105,13 +105,6 @@ export default {
   display: flex;
   flex-direction: column;
   background: #F6F8FA;
-}
-
-@media screen and (max-width: 840px) {
-  .card-list__header {
-    flex-direction: column;
-    justify-content: space-evenly;
-  }
 }
 
 .cards-wrapper {
@@ -160,5 +153,12 @@ export default {
   border-radius: 4px;
   position: relative;
   bottom: 0
+}
+
+@media screen and (max-width: 840px) {
+  .card-list__header {
+    flex-direction: column;
+    justify-content: space-evenly;
+  }
 }
 </style>
